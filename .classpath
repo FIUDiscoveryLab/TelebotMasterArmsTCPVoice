@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="ThirdParty/JSSC/jssc.jar"/>
+	<classpathentry kind="lib" path="ThirdParty/ndds.5.1.0/class/nddsjava.jar"/>
+	<classpathentry kind="lib" path="ThirdParty/ndds.5.1.0/class/nddsjavad.jar"/>
+	<classpathentry kind="lib" path="ThirdParty/SFL4J/slf4j-api-1.7.12.jar"/>
+	<classpathentry kind="lib" path="ThirdParty/SFL4J/slf4j-simple-1.7.12.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
