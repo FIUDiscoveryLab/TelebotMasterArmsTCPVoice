@@ -2,6 +2,8 @@ package discoverylab.telebot.master.arms;
 
 import static discoverylab.util.logging.LogUtils.*;
 import discoverylab.telebot.master.arms.configurations.MasterArmsVoiceConfig;
+import discoverylab.telebot.master.arms.gui.TelebotMasterArmsTCPVoiceModel;
+import discoverylab.telebot.master.arms.gui.TelebotMasterArmsTCPVoiceView;
 
 import com.rti.dds.infrastructure.InstanceHandle_t;
 import TelebotDDSCore.Source.Java.Generated.master.arms.TMasterToArms;
@@ -14,7 +16,11 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 	
 	public static String TAG = makeLogTag(TelebotMasterArmsTCPVoiceComponent.class);
 	
+	private TelebotMasterArmsTCPVoiceView view;
+	private String command;
+	private int commandCount = 0;
 	private int defaultSpeed = 100;
+	
 	
 	private TMasterToArmsDataWriter writer;
 	TMasterToArms instance = new TMasterToArms();
@@ -22,6 +28,8 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 	
 	public TelebotMasterArmsTCPVoiceComponent(int portNumber) {
 		super(portNumber);
+		view = new TelebotMasterArmsTCPVoiceView();
+		
 	}
 	
 	/**
@@ -32,7 +40,21 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 		writer = (TMasterToArmsDataWriter) getDataWriter();
 	}
 
-
+	public String getCommand()
+	{
+		return command;
+	}
+	
+	public void setCommand(String command)
+	{
+		this.command = command;
+	}
+	
+	public int getCommandCount()
+	{
+		return commandCount;
+	}
+	
 	@Override
 	public synchronized void callback(String data) { //try synchronized
 		
@@ -41,6 +63,9 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 		
 		if(command.equals("ST"))
 		{
+			setCommand("ST");
+			commandCount++;
+			
 			instance.servoId = 10;
 			instance.servoPositon = MasterArmsVoiceConfig.STOP_SERVO_10;
 			instance.servoSpeed = defaultSpeed;
@@ -84,6 +109,9 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 
 		else if(command.equals("LS"))
 		{
+			setCommand("LS");
+			commandCount++;
+			
 			instance.servoId = 10;
 			instance.servoPositon = MasterArmsVoiceConfig.LASERS_SERVO_10;
 			instance.servoSpeed = defaultSpeed;
@@ -157,6 +185,9 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 			
 		else if(command.equals("RT"))
 		{
+			setCommand("RT");
+			commandCount++;
+			
 			instance.servoId = 10;
 			instance.servoPositon = MasterArmsVoiceConfig.REST_SERVO_10;
 			instance.servoSpeed = defaultSpeed;
@@ -227,6 +258,9 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 			instance.servoSpeed = defaultSpeed;
 			writer.write(instance, instance_handle);		
 		}
+		
+		view.setCommand(command);
+		view.setCommandCount(commandCount);
 	}
 
 	/**
