@@ -1,9 +1,9 @@
-# TelebotMasterArmsTCP
+# TelebotMasterArmsTCPVoice
 Socket Server Arm Component used for interacting with devices that use a client socket connection to send data
 
 ##Installation
 ###Git
-`git clone --recursive https://github.com/FIUDiscoveryLab/TelebotMasterArmTCP.git`
+`git clone --recursive https://github.com/FIUDiscoveryLab/TelebotMasterArmsTCPVoice.git`
 
 ###Eclipse IDE
 
