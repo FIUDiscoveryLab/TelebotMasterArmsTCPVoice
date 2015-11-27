@@ -10,25 +10,23 @@ import java.awt.event.ActionEvent;
 import discoverylab.telebot.master.arms.TelebotMasterArmsTCPVoiceComponent;
 
 
+
+
 public class TelebotMasterArmsTCPVoiceController 
 {
 	private TelebotMasterArmsTCPVoiceView view;
-	private TelebotMasterArmsTCPVoiceModel model;
 	private TelebotMasterArmsTCPVoiceComponent telebotMasterArms;
 	
 	public TelebotMasterArmsTCPVoiceController(TelebotMasterArmsTCPVoiceView view, 
 			TelebotMasterArmsTCPVoiceModel model)
 	{
 		this.view = view;
-		this.model = model;
 		
 		this.view.addConnectListener(new ConnectListener());
 	}
 	
 	class ConnectListener implements ActionListener
 	{
-		boolean portFlag = false;
-		
 		public void actionPerformed(ActionEvent e)
 		{
 			try
@@ -46,12 +44,6 @@ public class TelebotMasterArmsTCPVoiceController
 									
 				// 3. INITIATE DataWriter
 				telebotMasterArms.initiateDataWriter();	
-				
-//				model.setPortNumber(portNumber);
-//				model.setPortNumberFlag(true);
-//				view.setCommand(telebotMasterArms.getCommand());
-//				view.setCommandCount(telebotMasterArms.getCommandCount());
-
 			}
 			catch(NumberFormatException exception)
 			{
