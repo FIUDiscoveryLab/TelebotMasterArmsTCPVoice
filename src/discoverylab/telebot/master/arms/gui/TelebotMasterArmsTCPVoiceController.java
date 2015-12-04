@@ -8,11 +8,12 @@ import TelebotDDSCore.Source.Java.Generated.master.arms.TOPIC_MASTER_TO_SLAVE_AR
 import java.awt.event.ActionEvent;
 
 import discoverylab.telebot.master.arms.TelebotMasterArmsTCPVoiceComponent;
+import discoverylab.telebot.master.core.socket.CoreServerSocket;
 
 
 
 
-public class TelebotMasterArmsTCPVoiceController 
+public class TelebotMasterArmsTCPVoiceController
 {
 	private TelebotMasterArmsTCPVoiceView view;
 	private TelebotMasterArmsTCPVoiceComponent telebotMasterArms;
@@ -21,19 +22,29 @@ public class TelebotMasterArmsTCPVoiceController
 			TelebotMasterArmsTCPVoiceModel model)
 	{
 		this.view = view;
-		
 		this.view.addConnectListener(new ConnectListener());
 	}
 	
-	class ConnectListener implements ActionListener
+	public class DataListener
 	{
+		public void changeText(String data)
+		{
+			String command = data;
+			view.setCommandText(command);
+		}
+	}
+	
+	class ConnectListener implements ActionListener
+	{	
+		DataListener listener = new DataListener();
+		
 		public void actionPerformed(ActionEvent e)
 		{
 			try
 			{
 				int portNumber = view.getPortNumber();
 				
-				telebotMasterArms = new TelebotMasterArmsTCPVoiceComponent(portNumber);
+				telebotMasterArms = new TelebotMasterArmsTCPVoiceComponent(listener, portNumber);
 
 				// 1. INITIATE Slave Component DEVICE
 				telebotMasterArms.initiate();

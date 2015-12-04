@@ -7,9 +7,12 @@ import javax.swing.*;
 
 public class TelebotMasterArmsTCPVoiceView extends JFrame
 {
-	private JLabel portLabel = new JLabel("Port: ");
-	private JTextField port = new JTextField("6666");
-	private JButton connect = new JButton("Connect");
+	private JLabel labelPort = new JLabel("Port: ");
+	private JTextField textPort = new JTextField("6666");
+	private JButton buttonConnect = new JButton("Connect");
+	
+	private JLabel labelCommand = new JLabel("Command Given: ");
+	private JTextField textCommand  = new JTextField("None");
 	
 	public TelebotMasterArmsTCPVoiceView()
 	{
@@ -17,26 +20,39 @@ public class TelebotMasterArmsTCPVoiceView extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(800, 150);
 		
-		viewPanel.add(portLabel);
-		viewPanel.add(port);
-		viewPanel.add(connect);
+		viewPanel.add(labelPort);
+		viewPanel.add(textPort);
+		viewPanel.add(buttonConnect);
 		
+		viewPanel.add(labelCommand);
+		viewPanel.add(textCommand);
+		 
 		this.add(viewPanel);
 	}
 	
 	public int getPortNumber()
 	{
-		return Integer.parseInt(port.getText());
+		return Integer.parseInt(textPort.getText());
 	}
 	
 	public void setPortNumber(int portNumber)
 	{
-		port.setText(Integer.toString(portNumber));
+		textPort.setText(Integer.toString(portNumber));
+	}
+	
+	public String getCommandText()
+	{
+		return textCommand.getText();
+	}
+	
+	public void setCommandText(String command)
+	{
+		textCommand.setText(command);
 	}
 		
 	void addConnectListener(ActionListener e)
 	{
-		connect.addActionListener(e);
+		buttonConnect.addActionListener(e);
 	}
 	
 	void displayErrorMessage(String error)

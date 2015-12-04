@@ -2,6 +2,8 @@ package discoverylab.telebot.master.arms;
 
 import static discoverylab.util.logging.LogUtils.*;
 import discoverylab.telebot.master.arms.configurations.MasterArmsVoiceConfig;
+import discoverylab.telebot.master.arms.gui.TelebotMasterArmsTCPVoiceController;
+import discoverylab.telebot.master.arms.gui.TelebotMasterArmsTCPVoiceController.DataListener;
 
 import com.rti.dds.infrastructure.InstanceHandle_t;
 import TelebotDDSCore.Source.Java.Generated.master.arms.TMasterToArms;
@@ -15,13 +17,14 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 	public static String TAG = makeLogTag(TelebotMasterArmsTCPVoiceComponent.class);
 	
 	private int defaultSpeed = 100;
-	
 	private TMasterToArmsDataWriter writer;
+	private DataListener listener;
 	TMasterToArms instance = new TMasterToArms();
 	InstanceHandle_t instance_handle = InstanceHandle_t.HANDLE_NIL;
 	
-	public TelebotMasterArmsTCPVoiceComponent(int portNumber) {
+	public TelebotMasterArmsTCPVoiceComponent(DataListener listener, int portNumber) {
 		super(portNumber);
+		this.listener = listener;
 	}
 	
 	/**
@@ -37,6 +40,7 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 		
 		LOGI(TAG, "DATA: " + data );
 		String command = data;
+		listener.changeText(command);
 		
 		if(command.equals("ST"))
 		{
