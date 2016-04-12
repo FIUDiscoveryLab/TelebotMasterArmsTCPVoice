@@ -18,8 +18,7 @@ public class TelebotMasterArmsTCPVoiceController
 	private TelebotMasterArmsTCPVoiceView view;
 	private TelebotMasterArmsTCPVoiceComponent telebotMasterArms;
 	
-	public TelebotMasterArmsTCPVoiceController(TelebotMasterArmsTCPVoiceView view, 
-			TelebotMasterArmsTCPVoiceModel model)
+	public TelebotMasterArmsTCPVoiceController(TelebotMasterArmsTCPVoiceView view)
 	{
 		this.view = view;
 		this.view.addConnectListener(new ConnectListener());

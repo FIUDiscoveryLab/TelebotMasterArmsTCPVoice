@@ -13,9 +13,8 @@ public class TelebotMasterArmsTCPVoiceTest {
 	public static void main(String args []) {
 		
 		TelebotMasterArmsTCPVoiceView view = new TelebotMasterArmsTCPVoiceView();
-		TelebotMasterArmsTCPVoiceModel model = new TelebotMasterArmsTCPVoiceModel();
 
-		TelebotMasterArmsTCPVoiceController controller = new TelebotMasterArmsTCPVoiceController(view, model);
+		TelebotMasterArmsTCPVoiceController controller = new TelebotMasterArmsTCPVoiceController(view);
 		
 		view.setVisible(true);
 
