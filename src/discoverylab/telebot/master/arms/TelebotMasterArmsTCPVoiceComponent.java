@@ -2,7 +2,6 @@ package discoverylab.telebot.master.arms;
 
 import static discoverylab.util.logging.LogUtils.*;
 import discoverylab.telebot.master.arms.configurations.MasterArmsVoiceConfig;
-import discoverylab.telebot.master.arms.gui.TelebotMasterArmsTCPVoiceController;
 import discoverylab.telebot.master.arms.gui.TelebotMasterArmsTCPVoiceController.DataListener;
 
 import com.rti.dds.infrastructure.InstanceHandle_t;
@@ -35,201 +34,143 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 		writer = (TMasterToArmsDataWriter) getDataWriter();
 	}
 	
+	public String writeServoData(int servoID, int servoPosition, int servoSpeed)
+	{
+		instance.servoId = servoID;
+		instance.servoPositon = servoPosition;
+		instance.servoSpeed = servoSpeed;
+		writer.write(instance, instance_handle);
+		String data = instance.servoId + " " + instance.servoPositon + " " + instance.servoSpeed;
+		
+		return data;
+	}
+	
+	public void generatePositions(String command)
+	{
+		String data;
+		
+		if(command.equals("ST"))
+		{
+			data = writeServoData(10, MasterArmsVoiceConfig.STOP_SERVO_10, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(11, MasterArmsVoiceConfig.STOP_SERVO_11, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(30, MasterArmsVoiceConfig.STOP_RIGHT_SERVO_30, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(31, MasterArmsVoiceConfig.STOP_RIGHT_SERVO_31, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(32, MasterArmsVoiceConfig.STOP_RIGHT_SERVO_32, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(33, MasterArmsVoiceConfig.STOP_RIGHT_SERVO_33, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(34, MasterArmsVoiceConfig.STOP_RIGHT_SERVO_34, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(35, MasterArmsVoiceConfig.STOP_RIGHT_SERVO_35, defaultSpeed);
+			LOGI(TAG, data);
+		}
+		else if(command.equals("SH"))
+		{
+			data = writeServoData(10, MasterArmsVoiceConfig.SHIELD_SERVO_10, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(11, MasterArmsVoiceConfig.SHIELD_SERVO_11, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(30, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_20, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(31, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_21, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(32, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_22, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(33, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_23, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(34, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_24, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(35, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_25, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(30, MasterArmsVoiceConfig.SHIELD_RIGHT_SERVO_30, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(31, MasterArmsVoiceConfig.SHIELD_RIGHT_SERVO_31, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(32, MasterArmsVoiceConfig.SHIELD_RIGHT_SERVO_32, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(33, MasterArmsVoiceConfig.SHIELD_RIGHT_SERVO_33, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(34, MasterArmsVoiceConfig.SHIELD_RIGHT_SERVO_34, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(35, MasterArmsVoiceConfig.SHIELD_RIGHT_SERVO_35, defaultSpeed);
+			LOGI(TAG, data);
+		}
+		else if(command.equals("RT"))
+		{
+			data = writeServoData(10, MasterArmsVoiceConfig.REST_SERVO_10, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(11, MasterArmsVoiceConfig.REST_SERVO_11, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(30, MasterArmsVoiceConfig.REST_LEFT_SERVO_20, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(31, MasterArmsVoiceConfig.REST_LEFT_SERVO_21, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(32, MasterArmsVoiceConfig.REST_LEFT_SERVO_22, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(33, MasterArmsVoiceConfig.REST_LEFT_SERVO_23, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(34, MasterArmsVoiceConfig.REST_LEFT_SERVO_24, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(35, MasterArmsVoiceConfig.REST_LEFT_SERVO_25, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(30, MasterArmsVoiceConfig.REST_RIGHT_SERVO_30, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(31, MasterArmsVoiceConfig.REST_RIGHT_SERVO_31, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(32, MasterArmsVoiceConfig.REST_RIGHT_SERVO_32, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(33, MasterArmsVoiceConfig.REST_RIGHT_SERVO_33, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(34, MasterArmsVoiceConfig.REST_RIGHT_SERVO_34, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(35, MasterArmsVoiceConfig.REST_RIGHT_SERVO_35, defaultSpeed);
+			LOGI(TAG, data);	
+		}
+	}
+	
 	@Override
 	public synchronized void callback(String data) { //try synchronized
 		
 		LOGI(TAG, "DATA: " + data );
-		String command = data;
-		listener.changeText(command);
-		
-		if(command.equals("ST"))
-		{
-			instance.servoId = 10;
-			instance.servoPositon = MasterArmsVoiceConfig.STOP_SERVO_10;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-		
-			instance.servoId = 11;
-			instance.servoPositon = MasterArmsVoiceConfig.STOP_SERVO_11;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 30;
-			instance.servoPositon = MasterArmsVoiceConfig.STOP_RIGHT_SERVO_30;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 31;
-			instance.servoPositon = MasterArmsVoiceConfig.STOP_RIGHT_SERVO_31;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 32;
-			instance.servoPositon = MasterArmsVoiceConfig.STOP_RIGHT_SERVO_32;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 33;
-			instance.servoPositon = MasterArmsVoiceConfig.STOP_RIGHT_SERVO_33;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 34;
-			instance.servoPositon = MasterArmsVoiceConfig.STOP_RIGHT_SERVO_34;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 35;
-			instance.servoPositon = MasterArmsVoiceConfig.STOP_RIGHT_SERVO_35;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-		}
-
-		else if(command.equals("LS"))
-		{
-			instance.servoId = 10;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_SERVO_10;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 11;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_SERVO_11;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 20;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_LEFT_SERVO_20;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 21;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_LEFT_SERVO_21;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 22;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_LEFT_SERVO_22;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 23;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_LEFT_SERVO_23;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 24;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_LEFT_SERVO_24;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 25;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_LEFT_SERVO_25;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 30;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_RIGHT_SERVO_30;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 31;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_RIGHT_SERVO_31;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 32;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_RIGHT_SERVO_32;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 33;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_RIGHT_SERVO_33;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 34;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_RIGHT_SERVO_34;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 35;
-			instance.servoPositon = MasterArmsVoiceConfig.LASERS_RIGHT_SERVO_35;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-		}
-			
-		else if(command.equals("RT"))
-		{
-			instance.servoId = 10;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_SERVO_10;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 11;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_SERVO_11;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 20;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_LEFT_SERVO_20;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 21;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_LEFT_SERVO_21;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 22;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_LEFT_SERVO_22;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 23;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_LEFT_SERVO_23;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 24;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_LEFT_SERVO_24;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 25;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_LEFT_SERVO_25;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 30;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_RIGHT_SERVO_30;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 31;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_RIGHT_SERVO_31;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 32;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_RIGHT_SERVO_32;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 33;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_RIGHT_SERVO_33;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 34;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_RIGHT_SERVO_34;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);
-			
-			instance.servoId = 35;
-			instance.servoPositon = MasterArmsVoiceConfig.REST_RIGHT_SERVO_35;
-			instance.servoSpeed = defaultSpeed;
-			writer.write(instance, instance_handle);		
-		}
+		listener.changeText(data);
+		generatePositions(data);
 	}
 
 	/**
