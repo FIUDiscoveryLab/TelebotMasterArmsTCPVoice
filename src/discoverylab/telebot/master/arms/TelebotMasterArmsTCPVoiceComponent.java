@@ -57,6 +57,24 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 			data = writeServoData(11, MasterArmsVoiceConfig.STOP_SERVO_11, defaultSpeed);
 			LOGI(TAG, data);
 			
+			data = writeServoData(20, MasterArmsVoiceConfig.STOP_LEFT_SERVO_20, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(21, MasterArmsVoiceConfig.STOP_LEFT_SERVO_21, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(22, MasterArmsVoiceConfig.STOP_LEFT_SERVO_22, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(23, MasterArmsVoiceConfig.STOP_LEFT_SERVO_23, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(24, MasterArmsVoiceConfig.STOP_LEFT_SERVO_24, defaultSpeed);
+			LOGI(TAG, data);
+			
+			data = writeServoData(25, MasterArmsVoiceConfig.STOP_LEFT_SERVO_25, defaultSpeed);
+			LOGI(TAG, data);
+			
 			data = writeServoData(30, MasterArmsVoiceConfig.STOP_RIGHT_SERVO_30, defaultSpeed);
 			LOGI(TAG, data);
 			
@@ -127,22 +145,22 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 			data = writeServoData(11, MasterArmsVoiceConfig.REST_SERVO_11, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(30, MasterArmsVoiceConfig.REST_LEFT_SERVO_20, defaultSpeed);
+			data = writeServoData(20, MasterArmsVoiceConfig.REST_LEFT_SERVO_20, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(31, MasterArmsVoiceConfig.REST_LEFT_SERVO_21, defaultSpeed);
+			data = writeServoData(21, MasterArmsVoiceConfig.REST_LEFT_SERVO_21, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(32, MasterArmsVoiceConfig.REST_LEFT_SERVO_22, defaultSpeed);
+			data = writeServoData(22, MasterArmsVoiceConfig.REST_LEFT_SERVO_22, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(33, MasterArmsVoiceConfig.REST_LEFT_SERVO_23, defaultSpeed);
+			data = writeServoData(23, MasterArmsVoiceConfig.REST_LEFT_SERVO_23, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(34, MasterArmsVoiceConfig.REST_LEFT_SERVO_24, defaultSpeed);
+			data = writeServoData(24, MasterArmsVoiceConfig.REST_LEFT_SERVO_24, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(35, MasterArmsVoiceConfig.REST_LEFT_SERVO_25, defaultSpeed);
+			data = writeServoData(25, MasterArmsVoiceConfig.REST_LEFT_SERVO_25, defaultSpeed);
 			LOGI(TAG, data);
 			
 			data = writeServoData(30, MasterArmsVoiceConfig.REST_RIGHT_SERVO_30, defaultSpeed);
