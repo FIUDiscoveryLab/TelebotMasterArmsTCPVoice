@@ -83,22 +83,22 @@ public class TelebotMasterArmsTCPVoiceComponent extends CoreMasterTCPComponent i
 			data = writeServoData(11, MasterArmsVoiceConfig.SHIELD_SERVO_11, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(30, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_20, defaultSpeed);
+			data = writeServoData(20, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_20, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(31, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_21, defaultSpeed);
+			data = writeServoData(21, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_21, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(32, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_22, defaultSpeed);
+			data = writeServoData(22, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_22, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(33, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_23, defaultSpeed);
+			data = writeServoData(23, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_23, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(34, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_24, defaultSpeed);
+			data = writeServoData(24, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_24, defaultSpeed);
 			LOGI(TAG, data);
 			
-			data = writeServoData(35, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_25, defaultSpeed);
+			data = writeServoData(25, MasterArmsVoiceConfig.SHIELD_LEFT_SERVO_25, defaultSpeed);
 			LOGI(TAG, data);
 			
 			data = writeServoData(30, MasterArmsVoiceConfig.SHIELD_RIGHT_SERVO_30, defaultSpeed);
