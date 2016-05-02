@@ -1,6 +1,7 @@
 package discoverylab.telebot.master.arms.gui;
 
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -16,10 +17,13 @@ public class TelebotMasterArmsTCPVoiceView extends JFrame
 	
 	public TelebotMasterArmsTCPVoiceView()
 	{
-		JPanel viewPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
+		JPanel viewPanel = new JPanel(new GridLayout(1, 4, 20, 50));
+		viewPanel.setBorder(BorderFactory.createEmptyBorder(30,50,30,50));
+
+//		JPanel viewPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(800, 150);
-		
+		this.setSize(700, 150);
+		this.setTitle("Voice Control System");
 		viewPanel.add(labelPort);
 		viewPanel.add(textPort);
 		viewPanel.add(buttonConnect);
